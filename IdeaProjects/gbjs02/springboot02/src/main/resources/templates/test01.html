@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{/js/index.js}"></script>
+</head>
+<body>
+<h2>test01页面</h2>
+<table cellpadding="0" cellspacing="0" border="1" width="600">
+    <tr>
+        <td>序号</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>年龄</td>
+        <td>生日</td>
+    </tr>
+    <tr th:each="u,st:${session.list}">
+        <td th:text="${st.count}">序号</td>
+        <td th:text="${u.username}">用户名</td>
+        <td th:text="${u.password}">密码</td>
+        <td th:text="${u.age}">年龄</td>
+        <td th:text="${#dates.format(u.birthday,'yyyy-MM-dd')}">生日</td>
+    </tr>
+</table>
+<hr>
+<select>
+       <option>请选择</option>
+    <option th:each="user:${session.list}"
+            th:value="${user.age}"
+            th:text="${user.username}"
+            th:selected="${user.username=='rfy1'}">用户名</option>
+</select>
+<hr>
+<img src="/images/123.jpg" width="200" height="200" th:onclick="check()"/>
+
+
+</body>
+</html>

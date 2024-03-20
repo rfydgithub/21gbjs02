@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/mytest.css}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+success页面
+<hr>
+<hr>
+<a id="back" href="/user/testHref?id=1&name=rfy">普通超链接</a><br>
+<a th:href="@{/user/myHref(id=2,name='zhangsan')}">thymeleaf普通超链接</a><br>
+<a th:href="@{/user/testRestfull/{id}/{name}(id=3,name='李四')}">restfull风格</a>
+<p th:text="${name}"></p>
+<p th:utext="${name}"></p>
+<input type="text" value="阮"th:value="${name}"/>
+<hr>
+<hr>
+<form  th:action="@{/user/testAction}">
+    用户名:<input type="text" name="username" th:value="${user.username}"/><br>
+    密码:<input type="text" name="password" th:value="${user.password}"/><br>
+    生日:<input type="date" name="birthday" th:value="${#dates.format(user.birthday,'yyyy-MM-dd')}"/><br>
+    年龄:<input type="text" name="age" th:value="${user.age}"/><br>
+    <input type="submit" value="提交"/>
+</form>
+<hr>
+<hr>
+<a href="/user/getList" onclick="return confirm('是否删除')">删除</a>
+</body>
+
+</html>

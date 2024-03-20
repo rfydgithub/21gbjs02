@@ -1,0 +1,19 @@
+server:
+  port: 8002
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gbjs02?serverTimezone=UTC
+    username: root
+    password: root1234
+mybatis:
+mapper-locations: classpath:/mappers/UserMapper.xml
+type-aliases-package: com.baidu.mycommon.pojo
+name: rfy
+age: 20

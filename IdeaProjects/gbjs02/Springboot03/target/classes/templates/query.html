@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>query页面 </h2>
+<p>欢迎：<span th:text="${session.user2.name}"></span>登录</p>
+<table cellspacing="0" cellpadding="0" border="1" width="800">
+    <tr>
+        <td>序号</td>
+        <td>用户主键</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>年龄</td>
+        <td>生日</td>
+        <td>关联字段</td>
+        <td>操作</td>
+    </tr>
+    <tr th:each="user,status:${list}">
+        <td th:text="${status.count}">序号</td>
+        <td th:text="${user.id}">用户主键</td>
+        <td th:text="${user.name}">用户名</td>
+        <td th:text="${user.password}">密码</td>
+        <td th:text="${user.age}">年龄</td>
+        <td th:text="${#datas.format(user.birthday,'yyyy-MM-dd')}">生日</td>
+        <td th:text="${user.rid}">关联字段</td>
+        <td>
+            <a>编辑</a>
+            <a th:href="@{/user/deleteUserById/{id}(id=${user.id})}">删除</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
